@@ -1,0 +1,26 @@
+/node_modules
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+.idea
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Database dumps
+*.sql
+*.dump
+
+# Logs
+*.log
+logs/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
