@@ -1,86 +1,63 @@
-# Gestión de Direcciones - API
+# Document Tracking API
 
-API del gestion de direcciones
+REST API for document tracking and task management. Handles tasks, checklists, file attachments, forms, requests, notifications, real-time chat, calendar events, and performance targets. Part of a larger multi-service architecture.
 
-## Instalación
+## Stack
 
-Instalar [Node.js](https://nodejs.org/) v18+ para ejecutarlo.
+- Node.js, Express
+- Sequelize, PostgreSQL
+- Socket.io (real-time)
+- AWS S3 (file storage)
+- SendGrid (email notifications)
+- Google APIs (calendar integration)
+- node-cron (scheduled jobs)
 
-Instalar todas las dependencias
+## Setup
 
-```sh
+```bash
+cp .env.example .env
 npm install
-```
-
-## Comandos
-
-Para ejecutar en modo desarrollo
-
-```sh
+npm run migrate
+npm run seeders
 npm run dev
 ```
 
-Para ejecutar en producción
+## Environment Variables
 
-```sh
-npm start
+```ini
+SERVER_PORT=
+NODE_ENV=
+API_KEY=
+
+DB_NAME=
+DB_USER=
+DB_HOST=
+DB_PASSWORD=
+DB_PORT=
+
+AUTH_API_URL=
+AUTH_API_KEY=
+
+SENDGRID_API_KEY=
+MAIL_SENDER=
+
+AWS_BUCKET_NAME=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+
+GOOGLE_API_KEY=
+GOOGLE_CLIENT_ID=
+GOOGLE_API_URL=
+
+MICROSERVICE_SOCKET_URL=
 ```
 
-Para hacer migraciones a la base de datos
+## Scripts
 
-crear una migración
-
-```sh
-npx sequelize-cli migration:generate --name name_file
-```
-```sh
-npm run migrate
-```
-
-Deshacer la última migración
-
-```sh
-npm run migrate:rollback
-```
-
-Deshacer todas las migraciones
-
-```sh
-npm run migrate:rollback:all
-```
-
-Generar un archivo seeder
-
-```sh
-npx sequelize-cli seed:generate --name name_file
-```
-
-Para ejecutar los seeders creados
-
-```sh
-npm run seeders
-```
-
-Deshacer la última migración de seeders
-
-```sh
-npm run seeders:rollback
-```
-
-Deshacer todas las migraciones de seeders
-
-```sh
-npm run seeders:rollback:all
-```
-
-Para más comandos usando migraciones de [sequelize-cli (Ej. crear modelos, seeders, etc)](https://sequelize.org/docs/v6/other-topics/migrations/)
-
-## Ramas
-
-### main
-
-Versión actual en producción
-
-### dev
-
-Version actual en test
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Development server |
+| `npm run start` | Production server |
+| `npm run migrate` | Run migrations |
+| `npm run migrate:rollback` | Rollback last migration |
+| `npm run seeders` | Run all seeders |
